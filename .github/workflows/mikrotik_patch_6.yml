@@ -36,7 +36,7 @@ jobs:
         channel: [long-term,stable]
     env:
       TZ: 'Asia/Jakarta'
-      LATEST_VERSION: ""
+      LATEST_VERSION: "6.49.13"
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
