@@ -36,7 +36,7 @@ jobs:
         channel: [stable]
     env:
       TZ: 'Asia/Jakarta'
-      LATEST_VERSION: ""
+      LATEST_VERSION: "7.15.3"
       ARCH: ""
 
     steps:
@@ -52,8 +52,6 @@ jobs:
       id: get_latest
       run: |
         echo $(uname -a)
-        LATEST_VERSION=$(wget -nv -O - https://upgrade.mikrotik.com/routeros/NEWESTa7.${{ matrix.channel }} | cut -d ' ' -f1)
-        echo Latest Version:$LATEST_VERSION
         if [ "${{ github.event_name }}" == "schedule" ]; then
           _LATEST_VERSION=$(wget -nv -O - https://${{ env.CUSTOM_UPGRADE_URL }}/routeros/NEWESTa7.${{ matrix.channel }} | cut -d ' ' -f1)
           if [ "$_LATEST_VERSION" == "$LATEST_VERSION" ]; then
